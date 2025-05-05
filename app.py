@@ -6,7 +6,7 @@ import geopandas as gpd
 import matplotlib.pyplot as plt
 import streamlit as st
 
-st.header('Heleni graafik')
+st.header('Helen Pohl, graafik')
 
 STATISTIKAAMETI_API_URL = "https://andmed.stat.ee/api/v1/et/stat/RV032"
 
