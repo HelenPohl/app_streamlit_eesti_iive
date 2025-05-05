@@ -114,7 +114,8 @@ def plot(df):
     plt.tight_layout()
     plt.show()
 
-    st.title('Loomulik iive maakonniti aastal 2023')
+    st.title('Loomulik iive maakonniti')
+    
     st.pyplot(fig)
 
 df = import_data()
@@ -124,4 +125,5 @@ gdf = gpd.read_file(geojson)
 
 merged_data = gdf.merge(df, left_on='MNIMI', right_on='Maakond') 
 merged_data["Loomulik iive"] = merged_data["Mehed Loomulik iive"] + merged_data["Naised Loomulik iive"]
-plot(get_data_for_year(merged_data, 2017))
+year = st.sidebar.selectbox("Aasta", df.Aasta.unique())
+plot(get_data_for_year(merged_data, year))
