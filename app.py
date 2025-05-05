@@ -124,6 +124,12 @@ geojson = "maakonnad.geojson"
 gdf = gpd.read_file(geojson)
 
 merged_data = gdf.merge(df, left_on='MNIMI', right_on='Maakond') 
-merged_data["Loomulik iive"] = merged_data["Mehed Loomulik iive"] + merged_data["Naised Loomulik iive"]
-year = st.sidebar.selectbox("Aasta", df.Aasta.unique())
+sex = st.sidebar.selectbox("Sugu", ["Kõik", "Mehed", "Naised"])
+if sex == "Kõik":
+  merged_data["Loomulik iive"] = merged_data["Mehed Loomulik iive"] + merged_data["Naised Loomulik iive"]
+elif sex == "Mehed":
+  merged_data["Loomulik iive"] = merged_data["Mehed Loomulik iive"]
+elif sex == "Naised":
+  merged_data["Loomulik iive"] = merged_data["Naised Loomulik iive"]
+year = st.sidebar.selectbox("Aasta", df.Aasta.unique()[::-1])
 plot(get_data_for_year(merged_data, year))
