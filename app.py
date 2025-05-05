@@ -109,12 +109,13 @@ def plot(df):
                      legend=True,
                      cmap='viridis',  # Choose a colormap
                      legend_kwds={'label': "Loomulik iive"})
-    st.pyplot(fig)
     
-    plt.title('Loomulik iive maakonniti aastal 2023')
     plt.axis('off')  # Hide axis
     plt.tight_layout()
     plt.show()
+
+    st.title('Loomulik iive maakonniti aastal 2023')
+    st.pyplot(fig)
 
 df = import_data()
 
