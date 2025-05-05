@@ -4,6 +4,9 @@ from io import StringIO
 import json
 import geopandas as gpd
 import matplotlib.pyplot as plt
+import streamlit as st
+
+st.header('Heleni graafik')
 
 STATISTIKAAMETI_API_URL = "https://andmed.stat.ee/api/v1/et/stat/RV032"
 
@@ -106,6 +109,7 @@ def plot(df):
                      legend=True,
                      cmap='viridis',  # Choose a colormap
                      legend_kwds={'label': "Loomulik iive"})
+    st.pyplot(fig)
     
     plt.title('Loomulik iive maakonniti aastal 2023')
     plt.axis('off')  # Hide axis
